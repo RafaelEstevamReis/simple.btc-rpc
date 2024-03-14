@@ -36,13 +36,21 @@ public class RPC_Client
         if (typeof(T) == typeof(string))
         {
             var r = await client.PostAsync<string>("/", data);
-            r.EnsureSuccessStatusCode<RpcResult<object>>();
+            if (!r.IsSuccessStatusCode)
+            {
+                var err = r.ParseErrorResponseData<RpcResult>();
+                throw new RPCException(err.error);
+            }
             return (T)(object)r.Data;
         }
         else
         {
             var r = await client.PostAsync<RpcResult<T>>("/", data);
-            r.EnsureSuccessStatusCode<RpcResult<object>>();
+            if (!r.IsSuccessStatusCode)
+            {
+                var err = r.ParseErrorResponseData<RpcResult>();
+                throw new RPCException(err.error);
+            }
             // Check BTC error
             return r.Data.result;
         }

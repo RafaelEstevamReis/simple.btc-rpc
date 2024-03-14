@@ -1,5 +1,9 @@
-﻿namespace Simple.BTC.Models;
+﻿using System;
+using System.Runtime.CompilerServices;
 
+namespace Simple.BTC.Models;
+
+public class RpcResult : RpcResult<object> { }
 public class RpcResult<T>
 {
     public T result { get; set; }
@@ -11,4 +15,14 @@ public class Error
 {
     public int code { get; set; }
     public string message { get; set; }
+}
+
+public class RPCException : Exception
+{
+    public Error Error { get; }
+    public RPCException(Error e)
+        : base($"[{e.code}] {e.message}")
+    {
+        Error = e;
+    }
 }
