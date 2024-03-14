@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Simple.BTC.Models.Blcokchain;
+﻿namespace Simple.BTC.Models.Blcokchain;
 
 public class Getblock_Result
 {

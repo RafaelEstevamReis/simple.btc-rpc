@@ -94,4 +94,10 @@ public class RPC_Client
         return result;
     }
 
+    public async Task<Models.Wallet.GetAddressInfo_Result> Wallet_GetAddressInfo(string address)
+    {
+        var result = await rpc_call<Models.Wallet.GetAddressInfo_Result>(method: "getaddressinfo", address);
+        return result;
+    }
+
 }

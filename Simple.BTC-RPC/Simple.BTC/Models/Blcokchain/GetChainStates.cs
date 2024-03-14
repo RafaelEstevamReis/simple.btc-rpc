@@ -1,7 +1,5 @@
 ﻿namespace Simple.BTC.Models.Blcokchain;
 
-using System;
-
 public class GetChainStates_Result
 {
     public int headers { get; set; }

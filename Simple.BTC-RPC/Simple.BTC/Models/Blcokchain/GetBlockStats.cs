@@ -1,7 +1,5 @@
 ﻿namespace Simple.BTC.Models.Blcokchain;
 
-using System;
-
 public class GetBlockStats_Result
 {
     public long avgfee { get; set; }

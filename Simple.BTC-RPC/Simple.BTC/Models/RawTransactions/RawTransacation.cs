@@ -1,9 +1,5 @@
 ﻿namespace Simple.BTC.Models.RawTransactions;
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 public class RawTransacation_Result
 {
     public string txid { get; set; }
