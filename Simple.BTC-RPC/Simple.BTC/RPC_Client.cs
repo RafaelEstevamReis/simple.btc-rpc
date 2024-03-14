@@ -2,7 +2,6 @@
 
 using Simple.API;
 using Simple.BTC.Models;
-using Simple.BTC.Models.RawTransactions;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,10 +67,30 @@ public class RPC_Client
         var result = await rpc_call<Models.Blcokchain.GetBlockchainInfo_Result>(method: "getblockchaininfo");
         return result;
     }
-
-    public async Task<RawTransacation_Result> TX_GetRawTransaction(string tx)
+    public async Task<int> Chain_GetBlockCount()
     {
-        var result = await rpc_call<RawTransacation_Result>(method: "getrawtransaction", tx, 2);
+        var result = await rpc_call<int>(method: "getblockcount");
+        return result;
+    }
+    public async Task<Models.Blcokchain.GetBlockStats_Result> Chain_GetBlockStats(string blockId)
+    {
+        var result = await rpc_call<Models.Blcokchain.GetBlockStats_Result>(method: "getblockstats", blockId);
+        return result;
+    }
+    public async Task<Models.Blcokchain.GetBlockStats_Result> Chain_GetBlockStats(int height)
+    {
+        var result = await rpc_call<Models.Blcokchain.GetBlockStats_Result>(method: "getblockstats", height);
+        return result;
+    }
+    public async Task<Models.Blcokchain.GetChainStates_Result> Chain_GetChainStates()
+    {
+        var result = await rpc_call<Models.Blcokchain.GetChainStates_Result>(method: "getchainstates");
+        return result;
+    }
+
+    public async Task<Models.RawTransactions.RawTransacation_Result> TX_GetRawTransaction(string tx)
+    {
+        var result = await rpc_call<Models.RawTransactions.RawTransacation_Result>(method: "getrawtransaction", tx, 2);
         return result;
     }
 
