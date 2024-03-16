@@ -102,6 +102,11 @@ public class RPC_Client
         var result = await rpc_call< Models.Blcokchain.GetDeploymentInfo_Result> (method: "getdeploymentinfo");
         return result;
     }
+    public async Task<decimal> Chain_GetDifficulty()
+    {
+        var result = await rpc_call<decimal>(method: "getdifficulty");
+        return result;
+    }
 
     public async Task Chain_TEMPLATE()
     {
