@@ -3,6 +3,7 @@
 using Simple.API;
 using Simple.BTC.Models;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -115,6 +116,11 @@ public class RPC_Client
     public async Task<Models.Blcokchain.GetMempoolInfo_Result> Chain_GetMempoolInfo()
     {
         var result = await rpc_call< Models.Blcokchain.GetMempoolInfo_Result> (method: "getmempoolinfo");
+        return result;
+    }
+    public async Task<Dictionary<string, Models.Blcokchain.GetWarMempool_Result>> Chain_GetRawMempool()
+    {
+        var result = await rpc_call<Dictionary<string, Models.Blcokchain.GetWarMempool_Result>>(method: "getrawmempool", true);
         return result;
     }
 
