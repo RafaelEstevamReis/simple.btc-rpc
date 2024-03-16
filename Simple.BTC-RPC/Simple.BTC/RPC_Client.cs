@@ -94,8 +94,19 @@ public class RPC_Client
     }
     public async Task<Models.Blcokchain.GetChainTxStats_Result> Chain_GetChainTxStats(int nBlocks)
     {
-        var result = await rpc_call< Models.Blcokchain.GetChainTxStats_Result> (method: "getchaintxstats", nBlocks);
+        var result = await rpc_call<Models.Blcokchain.GetChainTxStats_Result>(method: "getchaintxstats", nBlocks);
         return result;
+    }
+    public async Task<Models.Blcokchain.GetDeploymentInfo_Result> Chain_GetDeploymentInfo()
+    {
+        var result = await rpc_call< Models.Blcokchain.GetDeploymentInfo_Result> (method: "getdeploymentinfo");
+        return result;
+    }
+
+    public async Task Chain_TEMPLATE()
+    {
+        var result = await rpc_call<string>(method: "method");
+        result = result;
     }
 
     public async Task<Models.RawTransactions.RawTransacation_Result> TX_GetRawTransaction(string tx)
