@@ -1,5 +1,9 @@
 # simple.btc-rpc
 
+[![.NET](https://github.com/RafaelEstevamReis/simple.btc-rpc/actions/workflows/dotnet.yml/badge.svg)](https://github.com/RafaelEstevamReis/simple.btc-rpc)
+[![NuGet](https://buildstats.info/nuget/Simple.BTC)](https://www.nuget.org/packages/Simple.BTC)
+
+
 A simple C# BTC Core RPC Rest API implementation
 
 Bitcoin Core API Docs: https://bitcoincore.org/en/doc/26.0.0/rpc/
