@@ -87,6 +87,16 @@ public class RPC_Client
         var result = await rpc_call<Models.Blcokchain.GetChainStates_Result>(method: "getchainstates");
         return result;
     }
+    public async Task<Models.Blcokchain.GetChainTips_Result[]> Chain_GetChainTips()
+    {
+        var result = await rpc_call<Models.Blcokchain.GetChainTips_Result[]>(method: "getchaintips");
+        return result;
+    }
+    public async Task<Models.Blcokchain.GetChainTxStats_Result> Chain_GetChainTxStats(int nBlocks)
+    {
+        var result = await rpc_call< Models.Blcokchain.GetChainTxStats_Result> (method: "getchaintxstats", nBlocks);
+        return result;
+    }
 
     public async Task<Models.RawTransactions.RawTransacation_Result> TX_GetRawTransaction(string tx)
     {
