@@ -25,9 +25,11 @@ public class RawTransacation_Result
 
     public class Vout
     {
-        public float value { get; set; }
-        public int n { get; set; }
+        public decimal value { get; set; }
+        public long n { get; set; }
         public Scriptpubkey scriptPubKey { get; set; }
+
+        public override string ToString() => $"{value} {scriptPubKey?.desc}";
     }
 
     public class Scriptpubkey

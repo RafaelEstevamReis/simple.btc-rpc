@@ -2,13 +2,13 @@
 
 public class GetChainTxStats_Result
 {
-    public int time { get; set; }
-    public int txcount { get; set; }
+    public long time { get; set; }
+    public long txcount { get; set; }
     public string window_final_block_hash { get; set; }
-    public int window_final_block_height { get; set; }
-    public int window_block_count { get; set; }
-    public int window_tx_count { get; set; }
-    public int window_interval { get; set; }
-    public float txrate { get; set; }
+    public long window_final_block_height { get; set; }
+    public long window_block_count { get; set; }
+    public long window_tx_count { get; set; }
+    public long window_interval { get; set; }
+    public decimal txrate { get; set; }
 }
 

@@ -3,12 +3,12 @@
 public class GetBlockchainInfo_Result
 {
     public string chain { get; set; }
-    public int blocks { get; set; }
-    public int headers { get; set; }
+    public long blocks { get; set; }
+    public long headers { get; set; }
     public string bestblockhash { get; set; }
-    public float difficulty { get; set; }
-    public int time { get; set; }
-    public int mediantime { get; set; }
+    public decimal difficulty { get; set; }
+    public long time { get; set; }
+    public long mediantime { get; set; }
     public float verificationprogress { get; set; }
     public bool initialblockdownload { get; set; }
     public string chainwork { get; set; }

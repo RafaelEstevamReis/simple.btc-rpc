@@ -11,11 +11,11 @@ public class GetAddressInfo_Result
     public bool iswatchonly { get; set; }
     public bool isscript { get; set; }
     public bool iswitness { get; set; }
-    public int witness_version { get; set; }
+    public long witness_version { get; set; }
     public string witness_program { get; set; }
     public string pubkey { get; set; }
     public bool ischange { get; set; }
-    public int timestamp { get; set; }
+    public long timestamp { get; set; }
     public string hdkeypath { get; set; }
     public string hdseedid { get; set; }
     public string hdmasterfingerprint { get; set; }
