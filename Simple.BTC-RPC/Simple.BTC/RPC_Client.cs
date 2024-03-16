@@ -107,6 +107,16 @@ public class RPC_Client
         var result = await rpc_call<decimal>(method: "getdifficulty");
         return result;
     }
+    public async Task<Models.Blcokchain.GetMempoolEntry_Result> Chain_GetMempoolEntry(string txId)
+    {
+        var result = await rpc_call<Models.Blcokchain.GetMempoolEntry_Result>(method: "getmempoolentry", txId);
+        return result;
+    }
+    public async Task<Models.Blcokchain.GetMempoolInfo_Result> Chain_GetMempoolInfo()
+    {
+        var result = await rpc_call< Models.Blcokchain.GetMempoolInfo_Result> (method: "getmempoolinfo");
+        return result;
+    }
 
     public async Task Chain_TEMPLATE()
     {
