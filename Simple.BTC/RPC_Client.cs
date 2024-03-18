@@ -35,6 +35,8 @@ public class RPC_Client
             @params = pars
         };
 
+        if (pars != null && pars.Length == 1 && pars[0] == null) pars = null;
+
         if (typeof(T) == typeof(string))
         {
             var r = await client.PostAsync<string>("/", data);
@@ -181,11 +183,25 @@ public class RPC_Client
         var result = await rpc_call<Models.RawTransactions.RawTransacation_Result>(method: "getrawtransaction", tx, 2);
         return result;
     }
-
+    public async Task Wallet_GetBalances()
+    {
+        var result = await rpc_call<string>(method: "getbalances");
+        result = result;
+    }
+    public async Task Wallet_GetWalletInfo()
+    {
+        var result = await rpc_call<string>(method: "getwalletinfo");
+        result = result;
+    }
     public async Task<Models.Wallet.GetAddressInfo_Result> Wallet_GetAddressInfo(string address)
     {
         var result = await rpc_call<Models.Wallet.GetAddressInfo_Result>(method: "getaddressinfo", address);
         return result;
+    }
+    public async Task Wallet_GetNewAddress(string? label = null)
+    {
+        var result = await rpc_call<string>(method: "getnewaddress", label);
+        result = result;
     }
 
 }

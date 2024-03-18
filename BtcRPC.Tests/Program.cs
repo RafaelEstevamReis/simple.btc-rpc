@@ -41,6 +41,8 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 
 //var tx = await client.TX_GetRawTransaction(block.tx[0]);
 //var addr = await client.Wallet_GetAddressInfo("1N1mCewkJPzYzxiacd7UrQ8hThtq9FJxH3");
-
+//await client.Wallet_GetBalances();
+//await client.Wallet_GetWalletInfo();
+//await client.Wallet_GetNewAddress();
 
 Console.WriteLine("End");
