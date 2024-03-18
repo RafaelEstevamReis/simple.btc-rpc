@@ -9,5 +9,5 @@ public class GetRpcInfo_Result
 public class Active_Commands
 {
     public string method { get; set; }
-    public int duration { get; set; }
+    public long duration { get; set; }
 }

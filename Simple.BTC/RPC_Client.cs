@@ -155,6 +155,16 @@ public class RPC_Client
         var result = await rpc_call<int>(method: "getconnectioncount");
         return result;
     }
+    public async Task NW_GetNetTotals()
+    {
+        var result = await rpc_call<Models.Network.GetNetTotals_Result>(method: "getnettotals");
+        result = result;
+    }
+    public async Task<Models.Network.GetNetworkInfo_Result> NW_GetNetworkInfo()
+    {
+        var result = await rpc_call<Models.Network.GetNetworkInfo_Result>(method: "getnetworkinfo");
+        return result;
+    }
 
     public async Task NW_TEMPLATE()
     {
