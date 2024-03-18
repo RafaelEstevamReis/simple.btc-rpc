@@ -21,6 +21,8 @@ public class RPC_Client
         client.SetAuthorization("Basic " + b64);
     }
 
+    public ClientInfo InternalRestClient => client;
+
     private async Task<T> rpc_call<T>(string method, params object[]? pars)
         => await rpc_call<T>(client, "simple.btc-rpc", method, pars);
     private static async Task<T> rpc_call<T>(ClientInfo client, string id, string method, params object[]? pars)
@@ -56,7 +58,6 @@ public class RPC_Client
         }
 
     }
-
 
     public async Task<Models.Blcokchain.Getblock_Result> Chain_GetBlock(string blockId)
     {
@@ -155,21 +156,24 @@ public class RPC_Client
         var result = await rpc_call<int>(method: "getconnectioncount");
         return result;
     }
-    public async Task NW_GetNetTotals()
+    public async Task<Models.Network.GetNetTotals_Result> NW_GetNetTotals()
     {
         var result = await rpc_call<Models.Network.GetNetTotals_Result>(method: "getnettotals");
-        result = result;
+        return result;
     }
     public async Task<Models.Network.GetNetworkInfo_Result> NW_GetNetworkInfo()
     {
         var result = await rpc_call<Models.Network.GetNetworkInfo_Result>(method: "getnetworkinfo");
         return result;
     }
-
-    public async Task NW_TEMPLATE()
+    public async Task<Models.Network.ListBanned_Result[]> NW_ListBanned()
     {
-        var result = await rpc_call<string>(method: "method");
-        result = result;
+        var result = await rpc_call<Models.Network.ListBanned_Result[]>(method: "listbanned");
+        return result;
+    }
+    public async Task NW_Ping()
+    {
+        await rpc_call<string>(method: "ping");
     }
 
     public async Task<Models.RawTransactions.RawTransacation_Result> TX_GetRawTransaction(string tx)
