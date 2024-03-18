@@ -123,8 +123,24 @@ public class RPC_Client
         var result = await rpc_call<Dictionary<string, Models.Blcokchain.GetWarMempool_Result>>(method: "getrawmempool", true);
         return result;
     }
+    public async Task Chain_GetTxOut(string txid, int n, bool includeMempool = true)
+    {
+        var result = await rpc_call<string>(method: "gettxout", txid, n, includeMempool);
+        result = result;
+    }
 
-    public async Task Chain_TEMPLATE()
+    public async Task<Models.Control.GetMemoryInfo_Result> Ctrl_GetMemoryInfo()
+    {
+        var result = await rpc_call<Models.Control.GetMemoryInfo_Result>(method: "getmemoryinfo");
+        return result;
+    }
+    public async Task<Models.Control.GetRpcInfo_Result> Ctrl_GetRpcInfo()
+    {
+        var result = await rpc_call< Models.Control.GetRpcInfo_Result> (method: "getrpcinfo");
+        return result;
+    }
+
+    public async Task Ctrl_TEMPLATE()
     {
         var result = await rpc_call<string>(method: "method");
         result = result;
