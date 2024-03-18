@@ -100,7 +100,7 @@ public class RPC_Client
     }
     public async Task<Models.Blcokchain.GetDeploymentInfo_Result> Chain_GetDeploymentInfo()
     {
-        var result = await rpc_call< Models.Blcokchain.GetDeploymentInfo_Result> (method: "getdeploymentinfo");
+        var result = await rpc_call<Models.Blcokchain.GetDeploymentInfo_Result>(method: "getdeploymentinfo");
         return result;
     }
     public async Task<decimal> Chain_GetDifficulty()
@@ -115,7 +115,7 @@ public class RPC_Client
     }
     public async Task<Models.Blcokchain.GetMempoolInfo_Result> Chain_GetMempoolInfo()
     {
-        var result = await rpc_call< Models.Blcokchain.GetMempoolInfo_Result> (method: "getmempoolinfo");
+        var result = await rpc_call<Models.Blcokchain.GetMempoolInfo_Result>(method: "getmempoolinfo");
         return result;
     }
     public async Task<Dictionary<string, Models.Blcokchain.GetWarMempool_Result>> Chain_GetRawMempool()
@@ -136,11 +136,27 @@ public class RPC_Client
     }
     public async Task<Models.Control.GetRpcInfo_Result> Ctrl_GetRpcInfo()
     {
-        var result = await rpc_call< Models.Control.GetRpcInfo_Result> (method: "getrpcinfo");
+        var result = await rpc_call<Models.Control.GetRpcInfo_Result>(method: "getrpcinfo");
+        return result;
+    }
+    public async Task<Dictionary<string, bool>> Ctrl_Logging()
+    {
+        var result = await rpc_call<Dictionary<string, bool>>(method: "logging");
+        return result;
+    }
+    public async Task<TimeSpan> Ctrl_Uptime()
+    {
+        var result = await rpc_call<long>(method: "uptime");
+        return TimeSpan.FromSeconds(result);
+    }
+
+    public async Task<int> NW_GetConnectionCount()
+    {
+        var result = await rpc_call<int>(method: "getconnectioncount");
         return result;
     }
 
-    public async Task Ctrl_TEMPLATE()
+    public async Task NW_TEMPLATE()
     {
         var result = await rpc_call<string>(method: "method");
         result = result;

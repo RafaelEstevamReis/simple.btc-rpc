@@ -17,6 +17,7 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 //var cnt = await client.Chain_GetBlockCount();
 //var state = await client.Chain_GetChainStates();
 //var statsHeight = await client.Chain_GetBlockStats(834718);
+//var block = await client.Chain_GetBlock("00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09");
 //var statsHash = await client.Chain_GetBlockStats("00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09");
 //var tips = await client.Chain_GetChainTips();
 //var txStats = await client.Chain_GetChainTxStats(128);
@@ -29,8 +30,12 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 
 //var memInfo = await client.Ctrl_GetMemoryInfo();
 //var rpcInfo = await client.Ctrl_GetRpcInfo();
+//var loggingInfo = await client.Ctrl_Logging();
+//var up = await client.Ctrl_Uptime();
 
-//var block = await client.Chain_GetBlock("00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09");
+//var cnnCount = await client.NW_GetConnectionCount();
+
+
 //var tx = await client.TX_GetRawTransaction(block.tx[0]);
 //var addr = await client.Wallet_GetAddressInfo("1N1mCewkJPzYzxiacd7UrQ8hThtq9FJxH3");
 
