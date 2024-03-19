@@ -37,7 +37,7 @@ public class RPC_Client
 
         if (pars != null && pars.Length == 1 && pars[0] == null) pars = null;
 
-        if (typeof(T) == typeof(string))
+        if (typeof(T) == typeof(RawJson))
         {
             var r = await client.PostAsync<string>("/", data);
             if (!r.IsSuccessStatusCode)
@@ -45,7 +45,11 @@ public class RPC_Client
                 var err = r.ParseErrorResponseData<RpcResult>();
                 throw new RPCException(err.error);
             }
-            return (T)(object)r.Data;
+            var rj = new RawJson()
+            {
+                Value = r.Data,
+            };
+            return (T)(object)rj;
         }
         else
         {
@@ -126,10 +130,10 @@ public class RPC_Client
         var result = await rpc_call<Dictionary<string, Models.Blcokchain.GetWarMempool_Result>>(method: "getrawmempool", true);
         return result;
     }
-    public async Task Chain_GetTxOut(string txid, int n, bool includeMempool = true)
+    public async Task<Models.Blcokchain.GetTxOut_Result> Chain_GetTxOut(string txid, int n, bool includeMempool = true)
     {
-        var result = await rpc_call<string>(method: "gettxout", txid, n, includeMempool);
-        result = result;
+        var result = await rpc_call<Models.Blcokchain.GetTxOut_Result>(method: "gettxout", txid, n, includeMempool);
+        return result;
     }
 
     public async Task<Models.Control.GetMemoryInfo_Result> Ctrl_GetMemoryInfo()
@@ -183,25 +187,32 @@ public class RPC_Client
         var result = await rpc_call<Models.RawTransactions.RawTransacation_Result>(method: "getrawtransaction", tx, 2);
         return result;
     }
-    public async Task Wallet_GetBalances()
+    public async Task<Models.Wallet.GetBalances_Result> Wallet_GetBalances()
     {
-        var result = await rpc_call<string>(method: "getbalances");
-        result = result;
+        var result = await rpc_call<Models.Wallet.GetBalances_Result>(method: "getbalances");
+        return result;
     }
-    public async Task Wallet_GetWalletInfo()
+    public async Task<Models.Wallet.GetWalletInfo_Result> Wallet_GetWalletInfo()
     {
-        var result = await rpc_call<string>(method: "getwalletinfo");
-        result = result;
+        var result = await rpc_call<Models.Wallet.GetWalletInfo_Result>(method: "getwalletinfo");
+        return result;
     }
     public async Task<Models.Wallet.GetAddressInfo_Result> Wallet_GetAddressInfo(string address)
     {
         var result = await rpc_call<Models.Wallet.GetAddressInfo_Result>(method: "getaddressinfo", address);
         return result;
     }
-    public async Task Wallet_GetNewAddress(string? label = null)
+    public async Task<string> Wallet_GetNewAddress(string? label = null)
     {
+        var a = await rpc_call<RawJson>(method: "getnewaddress", label);
         var result = await rpc_call<string>(method: "getnewaddress", label);
-        result = result;
+        return result;
+    }
+
+
+    internal class RawJson
+    {
+        public string Value { get; set; }
     }
 
 }

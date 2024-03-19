@@ -26,7 +26,7 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 //var mpEntry = await client.Chain_GetMempoolEntry("");
 //var mpInfo = await client.Chain_GetMempoolInfo();
 //var rmpData = await client.Chain_GetRawMempool();
-//await client.Chain_GetTxOut("txId", 1, true);
+//var txOut = await client.Chain_GetTxOut("txid", 0, true);
 
 //var memInfo = await client.Ctrl_GetMemoryInfo();
 //var rpcInfo = await client.Ctrl_GetRpcInfo();
@@ -41,8 +41,8 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 
 //var tx = await client.TX_GetRawTransaction(block.tx[0]);
 //var addr = await client.Wallet_GetAddressInfo("1N1mCewkJPzYzxiacd7UrQ8hThtq9FJxH3");
-//await client.Wallet_GetBalances();
-//await client.Wallet_GetWalletInfo();
-//await client.Wallet_GetNewAddress();
+//var bal = await client.Wallet_GetBalances();
+//var walletInfo = await client.Wallet_GetWalletInfo();
+//var addr = await client.Wallet_GetNewAddress();
 
 Console.WriteLine("End");

@@ -31,12 +31,4 @@ public class RawTransacation_Result
 
         public override string ToString() => $"{value} {scriptPubKey?.desc}";
     }
-
-    public class Scriptpubkey
-    {
-        public string asm { get; set; }
-        public string desc { get; set; }
-        public string hex { get; set; }
-        public string type { get; set; }
-    }
 }
