@@ -209,10 +209,9 @@ public class RPC_Client
         return result;
     }
 
-
     internal class RawJson
     {
-        public string Value { get; set; }
+        public string Value { get; set; } = string.Empty;
     }
 
 }
