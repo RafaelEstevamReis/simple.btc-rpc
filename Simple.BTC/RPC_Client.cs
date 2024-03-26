@@ -15,10 +15,7 @@ public class RPC_Client
     public RPC_Client(string rpcAddress, string user, string pass)
     {
         client = new ClientInfo(rpcAddress);
-
-        var str = $"{user}:{pass}";
-        var b64 = Convert.ToBase64String(Encoding.ASCII.GetBytes(str));
-        client.SetAuthorization("Basic " + b64);
+        client.SetAuthorizationBasic(user, pass);
     }
 
     public ClientInfo InternalRestClient => client;
