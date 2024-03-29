@@ -62,6 +62,9 @@ public class RPC_Client
 
     }
 
+    public async Task<T> CALL<T>(string method, params object[]? pars)
+        => await rpc_call<T>(client, "simple.btc-rpc", method, pars);
+
     public async Task<Models.Blcokchain.Getblock_Result> Chain_GetBlock(string blockId)
     {
         var result = await rpc_call<Models.Blcokchain.Getblock_Result>(method: "getblock", blockId);
@@ -154,6 +157,23 @@ public class RPC_Client
         return TimeSpan.FromSeconds(result);
     }
 
+    public async Task<Models.Mining.GetMiningInfo_Result> Mining_GetMiningInfo()
+    {
+        var result = await rpc_call<Models.Mining.GetMiningInfo_Result>(method: "getmininginfo");
+        return result;
+    }
+    public async Task<decimal> Mining_GetHashRate()
+    {
+        var result = await rpc_call<decimal>(method: "getnetworkhashps", 30);
+        return result;
+    }
+    public async Task<decimal> Mining_GetHashRate_ExaHashes()
+    {
+        const decimal EXA = 1_000_000_000_000_000_000;
+        var rate = await Mining_GetHashRate();
+        return rate / EXA;
+    }
+
     public async Task<int> NW_GetConnectionCount()
     {
         var result = await rpc_call<int>(method: "getconnectioncount");
@@ -184,6 +204,14 @@ public class RPC_Client
         var result = await rpc_call<Models.RawTransactions.RawTransacation_Result>(method: "getrawtransaction", tx, 2);
         return result;
     }
+
+    public async Task Utils_EstimateSmartFee(int targetBlocks, bool economical = true)
+    {
+        string type = economical ? "economical" : "conservative";
+        var result = await rpc_call<Models.Utils.EstimateSmartFee_Result>(method: "estimatesmartfee", targetBlocks, type);
+        result = result;
+    }
+
     public async Task<Models.Wallet.GetBalances_Result> Wallet_GetBalances()
     {
         var result = await rpc_call<Models.Wallet.GetBalances_Result>(method: "getbalances");
