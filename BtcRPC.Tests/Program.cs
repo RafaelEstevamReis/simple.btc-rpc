@@ -2,6 +2,7 @@
 Console.WriteLine("Hello, World!");
 
 //var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
+var client = new Simple.BTC.RPC_Client("http://192.168.1.25:8332", "test", "test");
 
 /*
  Require Config:

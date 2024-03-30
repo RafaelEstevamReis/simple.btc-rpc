@@ -70,14 +70,14 @@ public class RPC_Client
         return result?.Value;
     }
 
-    public async Task<Models.Blcokchain.Getblock_Result> Chain_GetBlock(string blockId)
+    public async Task<Models.Blockchain.Getblock_Result> Chain_GetBlock(string blockId)
     {
-        var result = await rpc_call<Models.Blcokchain.Getblock_Result>(method: "getblock", blockId);
+        var result = await rpc_call<Models.Blockchain.Getblock_Result>(method: "getblock", blockId);
         return result;
     }
-    public async Task<Models.Blcokchain.GetBlockchainInfo_Result> Chain_GetBlockchainInfo()
+    public async Task<Models.Blockchain.GetBlockchainInfo_Result> Chain_GetBlockchainInfo()
     {
-        var result = await rpc_call<Models.Blcokchain.GetBlockchainInfo_Result>(method: "getblockchaininfo");
+        var result = await rpc_call<Models.Blockchain.GetBlockchainInfo_Result>(method: "getblockchaininfo");
         return result;
     }
     public async Task<int> Chain_GetBlockCount()
@@ -85,34 +85,34 @@ public class RPC_Client
         var result = await rpc_call<int>(method: "getblockcount");
         return result;
     }
-    public async Task<Models.Blcokchain.GetBlockStats_Result> Chain_GetBlockStats(string blockId)
+    public async Task<Models.Blockchain.GetBlockStats_Result> Chain_GetBlockStats(string blockId)
     {
-        var result = await rpc_call<Models.Blcokchain.GetBlockStats_Result>(method: "getblockstats", blockId);
+        var result = await rpc_call<Models.Blockchain.GetBlockStats_Result>(method: "getblockstats", blockId);
         return result;
     }
-    public async Task<Models.Blcokchain.GetBlockStats_Result> Chain_GetBlockStats(int height)
+    public async Task<Models.Blockchain.GetBlockStats_Result> Chain_GetBlockStats(int height)
     {
-        var result = await rpc_call<Models.Blcokchain.GetBlockStats_Result>(method: "getblockstats", height);
+        var result = await rpc_call<Models.Blockchain.GetBlockStats_Result>(method: "getblockstats", height);
         return result;
     }
-    public async Task<Models.Blcokchain.GetChainStates_Result> Chain_GetChainStates()
+    public async Task<Models.Blockchain.GetChainStates_Result> Chain_GetChainStates()
     {
-        var result = await rpc_call<Models.Blcokchain.GetChainStates_Result>(method: "getchainstates");
+        var result = await rpc_call<Models.Blockchain.GetChainStates_Result>(method: "getchainstates");
         return result;
     }
-    public async Task<Models.Blcokchain.GetChainTips_Result[]> Chain_GetChainTips()
+    public async Task<Models.Blockchain.GetChainTips_Result[]> Chain_GetChainTips()
     {
-        var result = await rpc_call<Models.Blcokchain.GetChainTips_Result[]>(method: "getchaintips");
+        var result = await rpc_call<Models.Blockchain.GetChainTips_Result[]>(method: "getchaintips");
         return result;
     }
-    public async Task<Models.Blcokchain.GetChainTxStats_Result> Chain_GetChainTxStats(int nBlocks)
+    public async Task<Models.Blockchain.GetChainTxStats_Result> Chain_GetChainTxStats(int nBlocks)
     {
-        var result = await rpc_call<Models.Blcokchain.GetChainTxStats_Result>(method: "getchaintxstats", nBlocks);
+        var result = await rpc_call<Models.Blockchain.GetChainTxStats_Result>(method: "getchaintxstats", nBlocks);
         return result;
     }
-    public async Task<Models.Blcokchain.GetDeploymentInfo_Result> Chain_GetDeploymentInfo()
+    public async Task<Models.Blockchain.GetDeploymentInfo_Result> Chain_GetDeploymentInfo()
     {
-        var result = await rpc_call<Models.Blcokchain.GetDeploymentInfo_Result>(method: "getdeploymentinfo");
+        var result = await rpc_call<Models.Blockchain.GetDeploymentInfo_Result>(method: "getdeploymentinfo");
         return result;
     }
     public async Task<decimal> Chain_GetDifficulty()
@@ -120,34 +120,34 @@ public class RPC_Client
         var result = await rpc_call<decimal>(method: "getdifficulty");
         return result;
     }
-    public async Task<Models.Blcokchain.GetMempoolEntry_Result> Chain_GetMempoolEntry(string txId)
+    public async Task<Models.Blockchain.GetMempoolEntry_Result> Chain_GetMempoolEntry(string txId)
     {
-        var result = await rpc_call<Models.Blcokchain.GetMempoolEntry_Result>(method: "getmempoolentry", txId);
+        var result = await rpc_call<Models.Blockchain.GetMempoolEntry_Result>(method: "getmempoolentry", txId);
         return result;
     }
-    public async Task<Models.Blcokchain.GetMempoolInfo_Result> Chain_GetMempoolInfo()
+    public async Task<Models.Blockchain.GetMempoolInfo_Result> Chain_GetMempoolInfo()
     {
-        var result = await rpc_call<Models.Blcokchain.GetMempoolInfo_Result>(method: "getmempoolinfo");
+        var result = await rpc_call<Models.Blockchain.GetMempoolInfo_Result>(method: "getmempoolinfo");
         return result;
     }
-    public async Task<Dictionary<string, Models.Blcokchain.GetWarMempool_Result>> Chain_GetRawMempool()
+    public async Task<Dictionary<string, Models.Blockchain.GetWarMempool_Result>> Chain_GetRawMempool()
     {
-        var result = await rpc_call<Dictionary<string, Models.Blcokchain.GetWarMempool_Result>>(method: "getrawmempool", true);
+        var result = await rpc_call<Dictionary<string, Models.Blockchain.GetWarMempool_Result>>(method: "getrawmempool", true);
         return result;
     }
-    public async Task<Models.Blcokchain.GetTxOut_Result> Chain_GetTxOut(string txid, int n, bool includeMempool = true)
+    public async Task<Models.Blockchain.GetTxOut_Result> Chain_GetTxOut(string txid, int n, bool includeMempool = true)
     {
-        var result = await rpc_call<Models.Blcokchain.GetTxOut_Result>(method: "gettxout", txid, n, includeMempool);
+        var result = await rpc_call<Models.Blockchain.GetTxOut_Result>(method: "gettxout", txid, n, includeMempool);
         return result;
     }
-    public async Task<Models.Blcokchain.GetTxOutSetInfo_Result> Chain_GetTxOutSetInfo(string blockHash)
+    public async Task<Models.Blockchain.GetTxOutSetInfo_Result> Chain_GetTxOutSetInfo(string blockHash)
     {
-        var result = await rpc_call<Models.Blcokchain.GetTxOutSetInfo_Result>(method: "gettxoutsetinfo", "none", blockHash);
+        var result = await rpc_call<Models.Blockchain.GetTxOutSetInfo_Result>(method: "gettxoutsetinfo", "none", blockHash);
         return result;
     }
-    public async Task<Models.Blcokchain.GetTxOutSetInfo_Result> Chain_GetTxOutSetInfo(int height)
+    public async Task<Models.Blockchain.GetTxOutSetInfo_Result> Chain_GetTxOutSetInfo(int height)
     {
-        var result = await rpc_call<Models.Blcokchain.GetTxOutSetInfo_Result>(method: "gettxoutsetinfo", "none", height);
+        var result = await rpc_call<Models.Blockchain.GetTxOutSetInfo_Result>(method: "gettxoutsetinfo", "none", height);
         return result;
     }
 

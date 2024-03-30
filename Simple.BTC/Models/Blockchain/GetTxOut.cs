@@ -1,4 +1,4 @@
-﻿namespace Simple.BTC.Models.Blcokchain;
+﻿namespace Simple.BTC.Models.Blockchain;
 
 public class GetTxOut_Result
 {
