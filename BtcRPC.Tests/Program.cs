@@ -31,6 +31,9 @@ Console.WriteLine("Hello, World!");
 //var rmpData = await client.Chain_GetRawMempool();
 //var txOut = await client.Chain_GetTxOut("txid", 0, true);
 
+//var txOutSetInfo = await client.Chain_GetTxOutSetInfo(800_000);
+//var txOutSetInfo = await client.Chain_GetTxOutSetInfo("00000000000000000002a7c4c1e48d76c5a37902165a270156b7a8d72728a054");
+
 //await client.Mining_GetMiningInfo();
 //var rate = await client.Mining_GetHashRate_ExaHashes();
 
@@ -53,4 +56,4 @@ Console.WriteLine("Hello, World!");
 //var walletInfo = await client.Wallet_GetWalletInfo();
 //var addr = await client.Wallet_GetNewAddress();
 
-Console.WriteLine("End");
+; Console.WriteLine("End");

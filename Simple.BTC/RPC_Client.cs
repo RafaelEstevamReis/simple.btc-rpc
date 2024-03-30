@@ -64,6 +64,11 @@ public class RPC_Client
 
     public async Task<T> CALL<T>(string method, params object[]? pars)
         => await rpc_call<T>(client, "simple.btc-rpc", method, pars);
+    public async Task<string?> CALL(string method, params object[]? pars)
+    {
+        var result = await rpc_call<RawJson>(client, "simple.btc-rpc", method, pars);
+        return result?.Value;
+    }
 
     public async Task<Models.Blcokchain.Getblock_Result> Chain_GetBlock(string blockId)
     {
@@ -133,6 +138,16 @@ public class RPC_Client
     public async Task<Models.Blcokchain.GetTxOut_Result> Chain_GetTxOut(string txid, int n, bool includeMempool = true)
     {
         var result = await rpc_call<Models.Blcokchain.GetTxOut_Result>(method: "gettxout", txid, n, includeMempool);
+        return result;
+    }
+    public async Task<Models.Blcokchain.GetTxOutSetInfo_Result> Chain_GetTxOutSetInfo(string blockHash)
+    {
+        var result = await rpc_call<Models.Blcokchain.GetTxOutSetInfo_Result>(method: "gettxoutsetinfo", "none", blockHash);
+        return result;
+    }
+    public async Task<Models.Blcokchain.GetTxOutSetInfo_Result> Chain_GetTxOutSetInfo(int height)
+    {
+        var result = await rpc_call<Models.Blcokchain.GetTxOutSetInfo_Result>(method: "gettxoutsetinfo", "none", height);
         return result;
     }
 
