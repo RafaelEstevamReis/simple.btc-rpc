@@ -1,6 +1,8 @@
-﻿namespace Simple.BTC.Models.Blockchain;
+﻿using Simple.BTC.Models.RawTransactions;
 
-public class Getblock_Result
+namespace Simple.BTC.Models.Blockchain;
+
+public class Getblock_ResultBase
 {
     public string hash { get; set; }
     public long confirmations { get; set; }
@@ -20,6 +22,12 @@ public class Getblock_Result
     public long strippedsize { get; set; }
     public long size { get; set; }
     public long weight { get; set; }
+}
+public class Getblock_Result : Getblock_ResultBase
+{
     public string[] tx { get; set; }
 }
-
+public class GetblockV2_Result : Getblock_ResultBase
+{
+    public RawTransacation_Result[] tx { get; set; }
+}

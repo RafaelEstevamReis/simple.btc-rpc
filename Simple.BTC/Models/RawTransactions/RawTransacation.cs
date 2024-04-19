@@ -20,7 +20,11 @@ public class RawTransacation_Result
     public class Vin
     {
         public string coinbase { get; set; }
+        public string[]? txinwitness { get; set; }
         public long sequence { get; set; }
+        public string? txid { get; set; }
+        public int? vout { get; set; }
+        public Scriptsig? scriptSig { get; set; }
     }
 
     public class Vout

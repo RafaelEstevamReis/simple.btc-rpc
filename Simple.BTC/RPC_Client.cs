@@ -75,6 +75,12 @@ public class RPC_Client
         var result = await rpc_call<Models.Blockchain.Getblock_Result>(method: "getblock", blockId);
         return result;
     }
+    public async Task<Models.Blockchain.GetblockV2_Result> Chain_GetBlock_Verbosity2(string blockId)
+    {
+        var result = await rpc_call<Models.Blockchain.GetblockV2_Result>(method: "getblock", blockId, 2);
+        return result;
+    }
+
     public async Task<Models.Blockchain.GetBlockchainInfo_Result> Chain_GetBlockchainInfo()
     {
         var result = await rpc_call<Models.Blockchain.GetBlockchainInfo_Result>(method: "getblockchaininfo");

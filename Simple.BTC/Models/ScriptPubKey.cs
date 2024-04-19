@@ -8,3 +8,8 @@ public class Scriptpubkey
     public string address { get; set; }
     public string type { get; set; }
 }
+public class Scriptsig
+{
+    public string asm { get; set; }
+    public string hex { get; set; }
+}
