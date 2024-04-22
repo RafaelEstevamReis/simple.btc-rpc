@@ -1,8 +1,7 @@
 ﻿using System;
 Console.WriteLine("Hello, World!");
 
-//var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
-var client = new Simple.BTC.RPC_Client("http://192.168.1.25:8332", "test", "test");
+var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 
 /*
  Require Config:
@@ -49,7 +48,10 @@ var client = new Simple.BTC.RPC_Client("http://192.168.1.25:8332", "test", "test
 //var banned = await client.NW_ListBanned();
 //await client.NW_Ping();
 
-//await client.Utils_EstimateSmartFee(5);
+//var fee = await client.Utils_EstimateSmartFee(5);
+//var addresses = await client.Utils_DeriveAddresses("wpkh([d34db33f/84h/0h/0h]xpub6DJ2dNUysrn5Vt36jH2KLBT2i1auw1tTSSomg8PhqNiUtx8QX2SvC9nrHu81fT41fvDUnhMjEzQgXnQjKEu3oaqMSzhSrHMxyyoEAmUHQbY/0/*)#cjjspncu", 0, 2);
+//var descInfo = await client.Utils_GetDescriptorInfo("wpkh([d34db33f/84h/0h/0h]xpub6DJ2dNUysrn5Vt36jH2KLBT2i1auw1tTSSomg8PhqNiUtx8QX2SvC9nrHu81fT41fvDUnhMjEzQgXnQjKEu3oaqMSzhSrHMxyyoEAmUHQbY/0/*)#cjjspncu");
+//var validationResult = await client.Utils_ValidateAddress("1N1mCewkJPzYzxiacd7UrQ8hThtq9FJxH3"); // Invalid bc1q09vm5lfy0j5reeulh4x5752q25uqqvz34hufdl
 
 //var tx = await client.TX_GetRawTransaction(block.tx[0]);
 //var addr = await client.Wallet_GetAddressInfo("1N1mCewkJPzYzxiacd7UrQ8hThtq9FJxH3");

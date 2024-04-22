@@ -226,11 +226,27 @@ public class RPC_Client
         return result;
     }
 
-    public async Task Utils_EstimateSmartFee(int targetBlocks, bool economical = true)
+    public async Task<Models.Utils.EstimateSmartFee_Result> Utils_EstimateSmartFee(int targetBlocks, bool economical = true)
     {
         string type = economical ? "economical" : "conservative";
         var result = await rpc_call<Models.Utils.EstimateSmartFee_Result>(method: "estimatesmartfee", targetBlocks, type);
-        result = result;
+        return result;
+    }
+    public async Task<string[]> Utils_DeriveAddresses(string descriptor, int range_start, int range_end)
+    {
+        int[] range = { range_start, range_end };
+        var result = await rpc_call<string[]>(method: "deriveaddresses", descriptor, range);
+        return result;
+    }
+    public async Task<Models.Utils.GetDescriptorInfo_Result> Utils_GetDescriptorInfo(string descriptor)
+    {
+        var result = await rpc_call<Models.Utils.GetDescriptorInfo_Result>(method: "getdescriptorinfo", descriptor);
+        return result;
+    }
+    public async Task<Models.Utils.ValidateAddress_Result> Utils_ValidateAddress(string address)
+    {
+        var result = await rpc_call<Models.Utils.ValidateAddress_Result>(method: "validateaddress", address);
+        return result;
     }
 
     public async Task<Models.Wallet.GetBalances_Result> Wallet_GetBalances()
