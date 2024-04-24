@@ -1,5 +1,14 @@
-﻿using System;
+﻿using Simple.BTC.Helpers;
+using System;
 Console.WriteLine("Hello, World!");
+
+
+var xpub = "xpub6CYYYw6h668PkCSXxH9yxBG32zCMEb6N9DuVY8Ax8U7RSV86qKrrhjJfS6nL5jSoikLpd1Qw9qgHv5vyRi7V4nfV3ymLfGpFShsYsFmQiT8";
+var zpub = "zpub6rD5AGSXPTDMSnpmczjENMT3NvVF7q5MySww6uxitUsBYgkZLeBywrcwUWhW5YkeY2aS7xc45APPgfA6s6wWfG2gnfABq6TDz9zqeMu2JCY";
+
+var xNew = PubCovnerter.ChangeVersionBytes(zpub, "xpub");
+var zNew = PubCovnerter.ChangeVersionBytes(xpub, "zpub");
+
 
 var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 

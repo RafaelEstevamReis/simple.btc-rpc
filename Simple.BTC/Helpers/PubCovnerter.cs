@@ -1,4 +1,7 @@
-﻿namespace Simple.BTC.Helpers;
+﻿// Based on jaonoctus' xpub-converter.js
+// https://gist.github.com/jaonoctus/db0f07aba4d2277be4ecb411b44f93d3
+
+namespace Simple.BTC.Helpers;
 
 using System;
 using System.Collections.Generic;
@@ -18,10 +21,12 @@ public static class PubCovnerter
     {
         var payload = buffer.Take(buffer.Length - 4).ToArray();
         var checksum = buffer.Skip(buffer.Length - 4).ToArray();
-        var newChecksum = DoubleSha256(payload).Take(4);
+        var newChecksum = DoubleSha256(payload);
 
-        if (!checksum.SequenceEqual(newChecksum))
+        for (int i = 0; i < 4; i++)
         {
+            if (newChecksum[i] == checksum[i]) continue;
+
             throw new InvalidOperationException("Invalid checksum");
         }
 
@@ -34,7 +39,7 @@ public static class PubCovnerter
         var payload = DecodeRaw(buffer);
         if (payload == null)
         {
-            throw new InvalidOperationException("Invalid checksum");
+            throw new InvalidOperationException("Invalid decodification process");
         }
         return payload;
     }
