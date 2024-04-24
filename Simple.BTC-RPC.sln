@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.BTC", "Simple.BTC\Simple.BTC.csproj", "{E8D98A4E-ECB9-445D-BB40-956C44C990B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple.BTC", "Simple.BTC\Simple.BTC.csproj", "{E8D98A4E-ECB9-445D-BB40-956C44C990B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcRPC.Tests", "BtcRPC.Tests\BtcRPC.Tests.csproj", "{71EF4139-8833-45B1-AA88-0DE35F1BD9D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BtcRPC.Tests", "BtcRPC.Tests\BtcRPC.Tests.csproj", "{71EF4139-8833-45B1-AA88-0DE35F1BD9D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Unit", "Tests.Unit\Tests.Unit.csproj", "{4D76DDE1-D5B2-42C8-90DC-39A2600375FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{71EF4139-8833-45B1-AA88-0DE35F1BD9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71EF4139-8833-45B1-AA88-0DE35F1BD9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71EF4139-8833-45B1-AA88-0DE35F1BD9D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D76DDE1-D5B2-42C8-90DC-39A2600375FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D76DDE1-D5B2-42C8-90DC-39A2600375FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D76DDE1-D5B2-42C8-90DC-39A2600375FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D76DDE1-D5B2-42C8-90DC-39A2600375FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
