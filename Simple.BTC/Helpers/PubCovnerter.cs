@@ -10,6 +10,17 @@ using System.Security.Cryptography;
 
 public static class PubCovnerter
 {
+    private static string Encode(byte[] payload)
+    {
+        var payloadU8 = payload; //new Uint8Array(payload);
+        var checksum = DoubleSha256(payloadU8);
+        var length = payloadU8.Length + 4;
+        var both = new byte[length];
+        Array.Copy(payloadU8, 0, both, 0, payloadU8.Length);
+        Array.Copy(checksum, 0, both, payloadU8.Length, 4);
+        return Base58.Encode(both);
+    }
+
     private static byte[] DoubleSha256(byte[] buffer)
     {
         using SHA256 sha256 = SHA256.Create();
@@ -75,7 +86,7 @@ public static class PubCovnerter
 
             for (int i = 0; i < prefixBytes.Length; i++) data[i] = prefixBytes[i];
 
-            return Base58.Encode(data);
+            return Encode(data); //Base58.Encode(data);
         }
         catch (Exception ex)
         {
