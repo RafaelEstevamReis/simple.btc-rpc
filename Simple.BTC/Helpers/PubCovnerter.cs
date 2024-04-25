@@ -12,7 +12,7 @@ public static class PubCovnerter
 {
     private static string Encode(byte[] payload)
     {
-        var payloadU8 = payload; //new Uint8Array(payload);
+        var payloadU8 = payload;
         var checksum = DoubleSha256(payloadU8);
         var length = payloadU8.Length + 4;
         var both = new byte[length];
