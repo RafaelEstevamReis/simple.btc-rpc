@@ -76,6 +76,8 @@ public static class PubCovnerter
             throw new ArgumentException("Invalid target version");
         }
 
+        if (xpub.StartsWith(targetFormat)) return xpub;
+
         // Trim whitespace
         xpub = xpub.Trim();
 
@@ -102,4 +104,6 @@ public static class PubCovnerter
         }
         return bytes;
     }
+
+
 }
