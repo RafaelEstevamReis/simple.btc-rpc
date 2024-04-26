@@ -31,7 +31,7 @@ public class RawTransacation_Result
     {
         public decimal value { get; set; }
         public long n { get; set; }
-        public Scriptpubkey scriptPubKey { get; set; }
+        public Scriptpubkey? scriptPubKey { get; set; }
 
         public override string ToString() => $"{value} {scriptPubKey?.desc}";
     }
