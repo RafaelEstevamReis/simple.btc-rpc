@@ -81,6 +81,11 @@ public class RPC_Client
         return result;
     }
 
+    public async Task<string> Chain_GetBestBlockHash()
+    {
+        var result = await rpc_call<string>(method: "getbestblockhash");
+        return result;
+    }
     public async Task<Models.Blockchain.GetBlockchainInfo_Result> Chain_GetBlockchainInfo()
     {
         var result = await rpc_call<Models.Blockchain.GetBlockchainInfo_Result>(method: "getblockchaininfo");
