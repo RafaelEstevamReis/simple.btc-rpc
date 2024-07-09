@@ -96,6 +96,11 @@ public class RPC_Client
         var result = await rpc_call<int>(method: "getblockcount");
         return result;
     }
+    public async Task<string> Chain_GetBlockHash(int height)
+    {
+        var result = await rpc_call<string>(method: "getblockhash", height);
+        return result;
+    }
     public async Task<Models.Blockchain.GetBlockStats_Result> Chain_GetBlockStats(string blockId)
     {
         var result = await rpc_call<Models.Blockchain.GetBlockStats_Result>(method: "getblockstats", blockId);
