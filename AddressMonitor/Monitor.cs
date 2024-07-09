@@ -143,7 +143,6 @@ public class Monitor
 
         for (long i = firstBlockHeight + 1; i < currentHeight; i++)
         {
-            Console.WriteLine($"Reading Block #{i}");
             if (Console.KeyAvailable)
             {
                 var k = Console.ReadKey(true);
@@ -156,7 +155,15 @@ public class Monitor
 
             try
             {
+                Console.Write($"Reading Block #{i} ");
+
+                if (i > 0 && i % 210_000 == 0)
+                {
+                    Console.Write("\\o/ HALVING!!! \\o/");
+                }
+
                 var block = await data.GetBlockAsync((int)i);
+                Console.WriteLine($"{DateTime.UnixEpoch.AddSeconds(block.time):g}z {block.nTx,6:N0}txs");
 
                 foreach (var tx in block.tx)
                 {
