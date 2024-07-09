@@ -8,7 +8,7 @@ public class RawTransacation_Result
     public int size { get; set; }
     public int vsize { get; set; }
     public int weight { get; set; }
-    public int locktime { get; set; }
+    public long locktime { get; set; }
     public Vin[] vin { get; set; }
     public Vout[] vout { get; set; }
     public string hex { get; set; }
