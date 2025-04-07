@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 public class RPC_Client
 {
-    // https://bitcoincore.org/en/doc/26.0.0/rpc/
+    // https://bitcoincore.org/en/doc/28.0.0/
 
     ClientInfo client;
     public RPC_Client(string rpcAddress, string user, string pass)
@@ -59,7 +59,6 @@ public class RPC_Client
             // Check BTC error
             return r.Data.result;
         }
-
     }
 
     public async Task<T> CALL<T>(string method, params object[]? pars)
