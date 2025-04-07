@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 Console.WriteLine("Hello, World!");
 
 var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
@@ -61,5 +63,23 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 //var walletInfo = await client.Wallet_GetWalletInfo();
 //var addr = await client.Wallet_GetNewAddress();
 
+
+// TOOLS:
+
+// Transaction Search
+var foundTr = await Simple.BTC.Tools.ChainSearch.SearchTransactionAsync(client, firstBlock: 878777, lastBlock: 888888,
+search: (block, tr) =>
+{
+    string searchForAddrContaining = "gZW2D"; // Coinbase Address
+    var allAddresses = tr.vout.Select(o => o.scriptPubKey?.address ?? "").ToArray();
+
+    return allAddresses.Any(addr => addr.Contains(searchForAddrContaining));
+},
+progress: b =>
+{
+    Console.WriteLine($"{b.DateTime:yyyy-MM-dd HH:mm} Searching Block {b.height} Hash: {b.blockhash}...");
+});
+
+if(foundTr != null) Console.WriteLine($"FOUND: {foundTr.txid} Hash: {foundTr.blockhash}...");
 
 ; Console.WriteLine("End");
