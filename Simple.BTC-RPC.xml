@@ -4,5 +4,24 @@
         <name>Simple.BTC</name>
     </assembly>
     <members>
+        <member name="M:Simple.BTC.Tools.ChainSearch.SearchBlockAsync(Simple.BTC.RPC_Client,System.Int32,System.Int32,System.Func{Simple.BTC.Models.Blockchain.GetblockV2_Result,System.Boolean})">
+            <summary>
+            Search blocks in blockchain
+            </summary>
+            <param name="client">Connected BTC RPC Client</param>
+            <param name="firstBlock">First block to search</param>
+            <param name="lastBlock">Last block to search (inclusive)</param>
+            <param name="search">Callback with Block, return TRUE to stop searching</param>
+        </member>
+        <member name="M:Simple.BTC.Tools.ChainSearch.SearchTransactionAsync(Simple.BTC.RPC_Client,System.Int32,System.Int32,System.Func{Simple.BTC.Models.Blockchain.GetblockV2_Result,Simple.BTC.Models.RawTransactions.RawTransacation_Result,System.Boolean},System.Action{Simple.BTC.Models.Blockchain.GetBlockStats_Result})">
+            <summary>
+            Search transactions in blockchain
+            </summary>
+            <param name="client">Connected BTC RPC Client</param>
+            <param name="firstBlock">First block to search</param>
+            <param name="lastBlock">Last block to search (inclusive)</param>
+            <param name="search">Callback with Block and Transaction, return TRUE to stop searching</param>
+            <param name="progress">Current search block stats</param>
+        </member>
     </members>
 </doc>
