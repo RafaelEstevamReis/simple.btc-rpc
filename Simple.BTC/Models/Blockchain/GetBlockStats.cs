@@ -1,4 +1,6 @@
-﻿namespace Simple.BTC.Models.Blockchain;
+﻿using System;
+
+namespace Simple.BTC.Models.Blockchain;
 
 public class GetBlockStats_Result
 {
@@ -33,4 +35,6 @@ public class GetBlockStats_Result
     public long utxo_size_inc { get; set; }
     public long utxo_increase_actual { get; set; }
     public long utxo_size_inc_actual { get; set; }
+
+    public DateTime DateTime => DateTime.UnixEpoch.AddSeconds(time);
 }

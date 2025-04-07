@@ -1,4 +1,5 @@
 ﻿using Simple.BTC.Models.RawTransactions;
+using System;
 
 namespace Simple.BTC.Models.Blockchain;
 
@@ -22,6 +23,8 @@ public class Getblock_ResultBase
     public long strippedsize { get; set; }
     public long size { get; set; }
     public long weight { get; set; }
+
+    public DateTime DateTime => DateTime.UnixEpoch.AddSeconds(time);
 }
 public class Getblock_Result : Getblock_ResultBase
 {
