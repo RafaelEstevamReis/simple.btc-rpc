@@ -1,7 +1,7 @@
-﻿using Simple.BTC.Models.RawTransactions;
-using System;
+﻿namespace Simple.BTC.Models.Blockchain;
 
-namespace Simple.BTC.Models.Blockchain;
+using Simple.BTC.Models.RawTransactions;
+using System;
 
 public class Getblock_ResultBase
 {
@@ -15,6 +15,7 @@ public class Getblock_ResultBase
     public long mediantime { get; set; }
     public long nonce { get; set; }
     public string bits { get; set; }
+    public string target { get; set; }
     public long difficulty { get; set; }
     public string chainwork { get; set; }
     public long nTx { get; set; }
