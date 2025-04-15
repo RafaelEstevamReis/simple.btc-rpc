@@ -6,6 +6,8 @@ public class GetBlockchainInfo_Result
     public long blocks { get; set; }
     public long headers { get; set; }
     public string bestblockhash { get; set; }
+    public string target { get; set; }
+    public string bits { get; set; }
     public decimal difficulty { get; set; }
     public long time { get; set; }
     public long mediantime { get; set; }
