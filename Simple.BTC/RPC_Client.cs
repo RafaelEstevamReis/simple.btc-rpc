@@ -262,10 +262,23 @@ public class RPC_Client
         return result;
     }
 
-
     public async Task<Models.Wallet.GetBalances_Result> Wallet_GetBalances()
     {
         var result = await rpc_call<Models.Wallet.GetBalances_Result>(method: "getbalances");
+        return result;
+    }
+    internal async Task<RawJson> Wallet_ListUnspent(string? walletName = null)
+    {
+        RawJson result;
+        if (walletName == null)
+        {
+            result = await rpc_call<RawJson>(method: "listunspent");
+        }
+        else
+        {
+            result = await rpc_call_uri<RawJson>(uri: "/wallet/" + walletName, method: "listunspent");
+        }
+
         return result;
     }
     public async Task<Models.Wallet.GetWalletInfo_Result> Wallet_GetWalletInfo()
