@@ -67,19 +67,33 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 // TOOLS:
 
 // Transaction Search
-var foundTr = await Simple.BTC.Tools.ChainSearch.SearchTransactionAsync(client, firstBlock: 878777, lastBlock: 888888,
-search: (block, tr) =>
-{
-    string searchForAddrContaining = "gZW2D"; // Coinbase Address
-    var allAddresses = tr.vout.Select(o => o.scriptPubKey?.address ?? "").ToArray();
+// // By Address
+// //var foundTr = await Simple.BTC.Tools.ChainSearch.SearchTransactionAsync(client, firstBlock: 878777, lastBlock: 888888,
+// //search: (block, tr) =>
+// //{
+// //    string searchForAddrContaining = "gZW2D"; // Coinbase Address
+// //    var allAddresses = tr.vout.Select(o => o.scriptPubKey?.address ?? "").ToArray();
+// //
+// //    return allAddresses.Any(addr => addr.Contains(searchForAddrContaining));
+// //},
+// //progress: b =>
+// //{
+// //    Console.WriteLine($"{b.DateTime:yyyy-MM-dd HH:mm} Searching Block {b.height} Hash: {b.blockhash}...");
+// //});
 
-    return allAddresses.Any(addr => addr.Contains(searchForAddrContaining));
-},
-progress: b =>
-{
-    Console.WriteLine($"{b.DateTime:yyyy-MM-dd HH:mm} Searching Block {b.height} Hash: {b.blockhash}...");
-});
+// // By Value
+// //var foundTr = await Simple.BTC.Tools.ChainSearch.SearchTransactionAsync(client, firstBlock: 878777, lastBlock: 888888,
+// //search: (block, tr) =>
+// //{
+// //    long searchForValueSats = 123456;
+// //
+// //    return tr.vout.Any(vo => vo.value == (searchForValueSats / 100_000_000M));
+// //},
+// //progress: b =>
+// //{
+// //    Console.WriteLine($"{b.DateTime:yyyy-MM-dd HH:mm} Searching Block {b.height} Hash: {b.blockhash}...");
+// //});
 
-if(foundTr != null) Console.WriteLine($"FOUND: {foundTr.txid} Hash: {foundTr.blockhash}...");
+//if (foundTr != null) Console.WriteLine($"FOUND: {foundTr.txid} Hash: {foundTr.blockhash}...");
 
 ; Console.WriteLine("End");
