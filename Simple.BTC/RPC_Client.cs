@@ -4,6 +4,7 @@ using Simple.API;
 using Simple.BTC.Models;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -238,6 +239,28 @@ public class RPC_Client
         var result = await rpc_call<Models.RawTransactions.RawTransacation_Result>(method: "getrawtransaction", tx, 2);
         return result;
     }
+    public async Task<string> TX_CreateRawTransaction(Models.RawTransactions.CreateRawTransaction args)
+    {
+        object output;
+        if(args.Outputs != null)
+        {
+            output = args.Outputs;
+        }
+        else
+        {
+            output = new Dictionary<string, string>
+            {
+                { "data", args.HexData ?? "" }
+            };
+        }
+        var result = await rpc_call<string>(method: "createrawtransaction", args.inputs, output);
+        return result;
+    }
+    public async Task<string> TX_SignRawTransactionWithKey(string transactionHex, string[] private_keys)
+    {
+        var result = await rpc_call<string>(method: "signrawtransactionwithkey", transactionHex, private_keys);
+        return result;
+    }
 
     public async Task<Models.Utils.EstimateSmartFee_Result> Utils_EstimateSmartFee(int targetBlocks, bool economical = true)
     {
@@ -293,8 +316,17 @@ public class RPC_Client
     }
     public async Task<string> Wallet_GetNewAddress(string? label = null)
     {
-        var a = await rpc_call<RawJson>(method: "getnewaddress", label);
         var result = await rpc_call<string>(method: "getnewaddress", label);
+        return result;
+    }
+    public async Task<string> Wallet_SignRawTransaction(string transactionHex)
+    {
+        var result = await rpc_call<string>(method: "signrawtransactionwithwallet", transactionHex);
+        return result;
+    }
+    public async Task<string> Wallet_SignRawTransaction(string walletName, string transactionHex)
+    {
+        var result = await rpc_call_uri<string>(uri: "/wallet/" + walletName, method: "signrawtransactionwithwallet", pars: transactionHex);
         return result;
     }
 

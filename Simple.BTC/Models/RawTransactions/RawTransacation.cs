@@ -1,5 +1,20 @@
 ﻿namespace Simple.BTC.Models.RawTransactions;
 
+using System.Collections.Generic;
+
+public class CreateRawTransaction
+{
+    public CreateRawTransaction_Inputs[] inputs { get; set; } = [];
+    public Dictionary<string, decimal>? Outputs { get; set; }
+    public string? HexData { get; set; }
+
+    public class CreateRawTransaction_Inputs
+    {
+        public string txid { get; set; }
+        public int vout { get; set; }
+    }
+}
+
 public class RawTransacation_Result
 {
     public string txid { get; set; }
