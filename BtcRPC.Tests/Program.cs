@@ -38,7 +38,7 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 //var txOutSetInfo = await client.Chain_GetTxOutSetInfo(800_000);
 //var txOutSetInfo = await client.Chain_GetTxOutSetInfo("00000000000000000002a7c4c1e48d76c5a37902165a270156b7a8d72728a054");
 
-//await client.Mining_GetMiningInfo();
+//var miningInfo = await client.Mining_GetMiningInfo();
 //var rate = await client.Mining_GetHashRate_ExaHashes();
 
 //var memInfo = await client.Ctrl_GetMemoryInfo();
