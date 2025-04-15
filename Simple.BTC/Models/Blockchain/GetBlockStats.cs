@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Simple.BTC.Models.Blockchain;
 
-namespace Simple.BTC.Models.Blockchain;
+using System;
 
 public class GetBlockStats_Result
 {

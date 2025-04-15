@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Simple.BTC.Models;
 
-namespace Simple.BTC.Models;
+using System;
 
 public class RpcResult : RpcResult<object> { }
 public class RpcResult<T>
