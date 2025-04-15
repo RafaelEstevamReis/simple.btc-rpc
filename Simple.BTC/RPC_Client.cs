@@ -20,9 +20,11 @@ public class RPC_Client
 
     public ClientInfo InternalRestClient => client;
 
+    private async Task<T> rpc_call_uri<T>(string uri, string method, params object[]? pars)
+        => await rpc_call<T>(client, uri, "simple.btc-rpc", method, pars);
     private async Task<T> rpc_call<T>(string method, params object[]? pars)
-        => await rpc_call<T>(client, "simple.btc-rpc", method, pars);
-    private static async Task<T> rpc_call<T>(ClientInfo client, string id, string method, params object[]? pars)
+        => await rpc_call<T>(client, "/", "simple.btc-rpc", method, pars);
+    private static async Task<T> rpc_call<T>(ClientInfo client, string url, string id, string method, params object[]? pars)
     {
         var data = new
         {
@@ -36,7 +38,7 @@ public class RPC_Client
 
         if (typeof(T) == typeof(RawJson))
         {
-            var r = await client.PostAsync<string>("/", data);
+            var r = await client.PostAsync<string>(url, data);
             if (!r.IsSuccessStatusCode)
             {
                 var err = r.ParseErrorResponseData<RpcResult>();
@@ -50,7 +52,7 @@ public class RPC_Client
         }
         else
         {
-            var r = await client.PostAsync<RpcResult<T>>("/", data);
+            var r = await client.PostAsync<RpcResult<T>>(url, data);
             if (!r.IsSuccessStatusCode)
             {
                 var err = r.ParseErrorResponseData<RpcResult>();
@@ -61,11 +63,13 @@ public class RPC_Client
         }
     }
 
+    public async Task<T> CALL_URI<T>(string uri, string method, params object[]? pars)
+        => await rpc_call_uri<T>(uri, method, pars);
     public async Task<T> CALL<T>(string method, params object[]? pars)
-        => await rpc_call<T>(client, "simple.btc-rpc", method, pars);
+        => await rpc_call<T>(method, pars);
     public async Task<string?> CALL(string method, params object[]? pars)
     {
-        var result = await rpc_call<RawJson>(client, "simple.btc-rpc", method, pars);
+        var result = await rpc_call<RawJson>(method, pars);
         return result?.Value;
     }
 
@@ -258,6 +262,7 @@ public class RPC_Client
         return result;
     }
 
+
     public async Task<Models.Wallet.GetBalances_Result> Wallet_GetBalances()
     {
         var result = await rpc_call<Models.Wallet.GetBalances_Result>(method: "getbalances");
@@ -280,7 +285,7 @@ public class RPC_Client
         return result;
     }
 
-    internal class RawJson
+    public class RawJson
     {
         public string Value { get; set; } = string.Empty;
     }
