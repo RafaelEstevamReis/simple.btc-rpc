@@ -261,6 +261,11 @@ public class RPC_Client
         var result = await rpc_call<string>(method: "signrawtransactionwithkey", transactionHex, private_keys);
         return result;
     }
+    public async Task TX_SendRawTransaction(string transactionHex)
+    {
+        var result = await rpc_call<RawJson>(method: "sendrawtransaction", transactionHex);
+        result = result;
+    }
 
     public async Task<Models.Utils.EstimateSmartFee_Result> Utils_EstimateSmartFee(int targetBlocks, bool economical = true)
     {
