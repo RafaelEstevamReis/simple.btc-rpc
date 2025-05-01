@@ -4,8 +4,6 @@ using Simple.API;
 using Simple.BTC.Models;
 using System;
 using System.Collections.Generic;
-using System.Reflection.Emit;
-using System.Text;
 using System.Threading.Tasks;
 
 public class RPC_Client
@@ -265,6 +263,11 @@ public class RPC_Client
     {
         var result = await rpc_call<RawJson>(method: "sendrawtransaction", transactionHex);
         result = result;
+    }
+    public async Task<Models.RawTransactions.RawTransacation_Result> TX_DecodeRawTransaction(string transactionHex)
+    {
+        var result = await rpc_call<Models.RawTransactions.RawTransacation_Result>(method: "decoderawtransaction", transactionHex);
+        return result;
     }
 
     public async Task<Models.Utils.EstimateSmartFee_Result> Utils_EstimateSmartFee(int targetBlocks, bool economical = true)
