@@ -227,6 +227,11 @@ public class RPC_Client
         var result = await rpc_call<Models.Network.ListBanned_Result[]>(method: "listbanned");
         return result;
     }
+    public async Task<Models.Network.GetPeerInfo_Result[]> NW_GetPeerInfo()
+    {
+        var result = await rpc_call<Models.Network.GetPeerInfo_Result[]>(method: "getpeerinfo");
+        return result;
+    }
     public async Task NW_Ping()
     {
         await rpc_call<string>(method: "ping");
