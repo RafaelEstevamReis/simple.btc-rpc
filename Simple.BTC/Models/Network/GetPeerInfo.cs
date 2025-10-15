@@ -73,7 +73,7 @@ public class GetPeerInfo_Result
     {
         string age = FormatAge(conntime);
         string direction = inbound ? "inbound" : "outbound";
-        string ping = pingtime > 0 ? $"{pingtime:0.000}s" : "-";
+        string ping = pingtime > 0 ? $"{pingtime * 1000:0}ms" : "-";
         string sent = $"{bytessent / 1024:0} KB";
         string received = $"{bytesrecv / 1024:0} KB";
         string ua = subver ?? "";
