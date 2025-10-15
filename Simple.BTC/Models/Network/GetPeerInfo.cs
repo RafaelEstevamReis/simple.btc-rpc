@@ -1,4 +1,6 @@
-﻿namespace Simple.BTC.Models.Network;
+﻿using System;
+
+namespace Simple.BTC.Models.Network;
 
 public class GetPeerInfo_Result
 {
@@ -67,4 +69,24 @@ public class GetPeerInfo_Result
         public int alert { get; set; }
     }
 
+    public override string ToString()
+    {
+        string age = FormatAge(conntime);
+        string direction = inbound ? "inbound" : "outbound";
+        string ping = pingtime > 0 ? $"{pingtime:0.000}s" : "-";
+        string sent = $"{bytessent / 1024:0} KB";
+        string received = $"{bytesrecv / 1024:0} KB";
+        string ua = subver ?? "";
+
+        // Formato alinhado como no Core: #peer | Age | address | direction | type | ping | sent | received | UA
+        return $"{id} | {age} | {addr} | {direction} | Up: {sent} Down: {received} / {ping} | {ua}";
+    }
+    static string FormatAge(long conntime)
+    {
+        long cnnSec = (long)(DateTime.UtcNow - DateTime.UnixEpoch).TotalSeconds - conntime;
+        if (cnnSec < 100) return $"{cnnSec}s";
+        else if (cnnSec < 60 * 100) return $"{cnnSec / 60:0}m";
+        else if (cnnSec < 3600 * 30) return $"{cnnSec / 3600:0}h";
+        else return $"{cnnSec / (24 * 3600):0}d";
+    }
 }

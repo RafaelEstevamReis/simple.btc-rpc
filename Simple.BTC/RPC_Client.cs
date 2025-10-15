@@ -227,6 +227,12 @@ public class RPC_Client
         var result = await rpc_call<Models.Network.ListBanned_Result[]>(method: "listbanned");
         return result;
     }
+    public async Task NW_SetBan(string address, Models.Network.SetBanCommand command, int timeSeconds = 24 * 3600)
+    {
+        RawJson r;
+        if (command == Models.Network.SetBanCommand.add) r = await rpc_call<RawJson>(method: "setban", address, "add", timeSeconds);
+        else r = await rpc_call<RawJson>(method: "setban", address, "remove");
+    }
     public async Task<Models.Network.GetPeerInfo_Result[]> NW_GetPeerInfo()
     {
         var result = await rpc_call<Models.Network.GetPeerInfo_Result[]>(method: "getpeerinfo");
@@ -245,7 +251,7 @@ public class RPC_Client
     public async Task<string> TX_CreateRawTransaction(Models.RawTransactions.CreateRawTransaction args)
     {
         object output;
-        if(args.Outputs != null)
+        if (args.Outputs != null)
         {
             output = args.Outputs;
         }

@@ -4,6 +4,16 @@
         <name>Simple.BTC</name>
     </assembly>
     <members>
+        <member name="F:Simple.BTC.Models.Network.SetBanCommand.add">
+            <summary>
+            Ban the Address
+            </summary>
+        </member>
+        <member name="F:Simple.BTC.Models.Network.SetBanCommand.remove">
+            <summary>
+            Remove from Banned List
+            </summary>
+        </member>
         <member name="M:Simple.BTC.Tools.ChainSearch.SearchBlockAsync(Simple.BTC.RPC_Client,System.Int32,System.Int32,System.Func{Simple.BTC.Models.Blockchain.GetblockV2_Result,System.Boolean})">
             <summary>
             Search blocks in blockchain
