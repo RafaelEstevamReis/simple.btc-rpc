@@ -33,7 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Simple.API" Version="1.9.8.4" />
+		<PackageReference Include="Simple.API" Version="1.9.8.5" />
 	</ItemGroup>
 
 </Project>
