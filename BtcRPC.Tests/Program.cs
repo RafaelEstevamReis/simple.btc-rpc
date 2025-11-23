@@ -4,7 +4,6 @@ using System.Linq;
 Console.WriteLine("Hello, World!");
 
 var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
-
 /*
  Require Config:
     server=1
@@ -45,11 +44,13 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 //var rpcInfo = await client.Ctrl_GetRpcInfo();
 //var loggingInfo = await client.Ctrl_Logging();
 //var up = await client.Ctrl_Uptime();
+//var response = await client.Ctrl_Stop(confirm: false);
 
 //var cnnCount = await client.NW_GetConnectionCount();
 //var netTotals = await client.NW_GetNetTotals();
 //var nwInfo await client.NW_GetNetworkInfo();
 //var banned = await client.NW_ListBanned();
+//var peers = await client.NW_GetPeerInfo();
 //await client.NW_Ping();
 
 //var fee = await client.Utils_EstimateSmartFee(5);
@@ -60,9 +61,9 @@ var client = new Simple.BTC.RPC_Client("http://127.0.0.1:8332", "test", "test");
 //var tx = await client.TX_GetRawTransaction(block.tx[0]);
 //var addr = await client.Wallet_GetAddressInfo("1N1mCewkJPzYzxiacd7UrQ8hThtq9FJxH3");
 //var bal = await client.Wallet_GetBalances();
+//var uxtos = await client.Wallet_ListUnspent();
 //var walletInfo = await client.Wallet_GetWalletInfo();
 //var addr = await client.Wallet_GetNewAddress();
-
 
 // TOOLS:
 
