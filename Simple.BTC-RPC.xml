@@ -14,6 +14,12 @@
             Remove from Banned List
             </summary>
         </member>
+        <member name="M:Simple.BTC.RPC_Client.Ctrl_Stop(System.Boolean)">
+            <summary>
+            Request a graceful shutdown of Bitcoin Core.
+            </summary>
+            <param name="confirm">True to CONFIRM that you want to shutdown</param>
+        </member>
         <member name="M:Simple.BTC.Tools.ChainSearch.SearchBlockAsync(Simple.BTC.RPC_Client,System.Int32,System.Int32,System.Func{Simple.BTC.Models.Blockchain.GetblockV2_Result,System.Boolean})">
             <summary>
             Search blocks in blockchain

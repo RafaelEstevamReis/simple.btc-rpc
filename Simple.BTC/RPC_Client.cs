@@ -189,6 +189,16 @@ public class RPC_Client
         var result = await rpc_call<long>(method: "uptime");
         return TimeSpan.FromSeconds(result);
     }
+    /// <summary>
+    /// Request a graceful shutdown of Bitcoin Core.
+    /// </summary>
+    /// <param name="confirm">True to CONFIRM that you want to shutdown</param>
+    public async Task<string> Ctrl_Stop(bool confirm = false)
+    {
+        if (!confirm) throw new ArgumentException("You must confirm that you want to SHUTDOWN Bitcoin Core");
+        var result = await rpc_call<string>(method: "stop");
+        return result;
+    }
 
     public async Task<Models.Mining.GetMiningInfo_Result> Mining_GetMiningInfo()
     {
