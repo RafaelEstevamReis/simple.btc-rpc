@@ -4,13 +4,19 @@ using Simple.API;
 using Simple.BTC.Models;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 public class RPC_Client
 {
     // https://bitcoincore.org/en/doc/28.0.0/
 
-    ClientInfo client;
+    private readonly ClientInfo client;
+    public RPC_Client(string rpcAddress, string user, string pass, HttpMessageHandler clientHandler)
+    {
+        client = new ClientInfo(rpcAddress, clientHandler);
+        client.SetAuthorizationBasic(user, pass);
+    }
     public RPC_Client(string rpcAddress, string user, string pass)
     {
         client = new ClientInfo(rpcAddress);
